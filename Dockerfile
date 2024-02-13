@@ -13,8 +13,5 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Expose port 3000
-EXPOSE 3000
-
 # Command to run the app
-CMD [ "node", "server.js" ]
+CMD [ "node", "todo-app/server.js" ]

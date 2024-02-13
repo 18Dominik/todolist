@@ -30,7 +30,6 @@ async function fetchTodos() {
   }
 }  
 
-
   fetchTodos();
 
   //when working with gitpod, instead of using localhost:3000, use gitpod url with port at the beginning, like: 'https://3000-18dominik-todolist-8vzmwfch90l.ws-eu108.gitpod.io/todolist'
