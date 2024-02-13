@@ -1,7 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const port = 3000;
@@ -30,9 +34,9 @@ app.get('/todolist', async (req, res) => {
 });
 
 // Optionally, explicitly handle the root route
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
+//app.get('/', (req, res) => {
+//  res.sendFile(__dirname + '/index.html');
+//});
 
 app.post('/todolist', async (req, res) => {
   console.log('Received request:', req.body);
