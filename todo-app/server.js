@@ -77,6 +77,10 @@ Containerize Application
 3. Create image: docker build -t todoapp .
 4. Run application container image: docker run --network mynetwork -p 3000:3000 todoapp
 
+Docker Compose
+Start: docker-compose up --build
+Close: docker-compose down
+
 
 */
 
