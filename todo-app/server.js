@@ -11,12 +11,14 @@ const app = express();
 const port = 3000;
 
 // Middleware
-app.use(express.static('/workspace/todolist/todo-app/'));
+
+app.use(express.static('./'));
+console.log(__dirname)
 app.use(cors());
 app.use(express.json()); // for parsing application/json
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/todolist') //change from "localhost" to e.g. mymongo if serve.js is containerized
+mongoose.connect('mongodb://mymongo:27017/todolist') //change from "localhost" to e.g. mymongo if serve.js is containerized
 .then(() => console.log('Successfully connected to MongoDB.'))
 .catch((error) => console.error('Error connecting to MongoDB:', error));
 
