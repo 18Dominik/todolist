@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+
 const app = express();
 const port = 3000;
 
@@ -26,6 +27,11 @@ app.get('/todolist', async (req, res) => {
   const todos = await Todo.find();
   console.log(todos)
   res.json(todos);
+});
+
+// Optionally, explicitly handle the root route
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.post('/todolist', async (req, res) => {
@@ -61,7 +67,7 @@ Containerize Application
 1.create network: docker network create mynetwork
 2. Run MongoDB in network:  docker run --name mymongo --network mynetwork1 -d -p 27017:27017 mongo
 3. Create image: docker build -t todoapp2 .
-4. Run application container image: docker run --network mynetwork1 -p 3000:3000 todoapp2
+4. Run application container image: docker run --network mynetwork1 todoapp9
 
 
 */
