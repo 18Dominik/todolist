@@ -7,6 +7,15 @@ async function fetchTodos() {
       const li = document.createElement('li');
       li.textContent = todo.task;
       listElement.appendChild(li);
+
+              // Create a delete button for each todo
+              const deleteBtn = document.createElement('button');
+              deleteBtn.textContent = 'X'; // Text for the delete button
+              deleteBtn.onclick = function() { deleteTodo(todo._id); }; // Assuming each todo has a unique ID
+      
+              // Append the delete button to each todo item
+              li.appendChild(deleteBtn);
+              listElement.appendChild(li);
     });
     console.log('Success to fetch todo:')
   }
@@ -28,7 +37,23 @@ async function fetchTodos() {
   } catch (error) { // Added 'error' parameter
     console.error('Failed to add todo:', error);
   }
-}  
+} 
+
+// Function to delete todo by ID
+async function deleteTodo(todoId) {
+  try {
+      const response = await fetch(`./todolist/${todoId}`, { // Adjust if necessary to match your API endpoint
+          method: 'DELETE', // Method type for deletion
+      });
+      if (response.ok) {
+          fetchTodos(); // Refresh the list after deletion
+      } else {
+          console.error('Failed to delete todo');
+      }
+  } catch (error) {
+      console.error('Error:', error);
+  }
+}
 
   fetchTodos();
 
