@@ -50,13 +50,16 @@ app.listen(port, () => {
 
 
 /* Test API with cURL: 
-curl -X POST http://localhost:3000/ \
+curl -X POST http://localhost:3000/todolist \
   -H "Content-Type: application/json" \
   -d '{"task": "Test Todo"}'
 
 curl -H "Accept: application/json" http://localhost:3000/todolist
 
- Connection string to mongo db VS Code extension with default docker settings: mongodb://localhost:27017
+Start Mongo DB Instance
+1. Pull Docker Image: docker pull mongo
+2. Run docker container: docker run --name mymongo -d -p 27017:27017 mongo
+3. Connect with VSCode extension: Connection string to mongo db VS Code extension with default docker settings: mongodb://localhost:27017
 
 */
 
