@@ -18,8 +18,8 @@ app.use(express.json()); // for parsing application/json
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/todolist') //change from "localhost" to e.g. mymongo if serve.js is containerized and vice versa
-.then(() => console.log('Successfully connected to MongoDB.'))
-.catch((error) => console.error('Error connecting to MongoDB:', error));
+  .then(() => console.log('Successfully connected to MongoDB.'))
+  .catch((error) => console.error('Error connecting to MongoDB:', error));
 
 // Define a schema
 const TodoSchema = new mongoose.Schema({
@@ -41,29 +41,29 @@ app.get('/todolist', async (req, res) => {
 
 app.post('/todolist', async (req, res) => {
   console.log('Received request:', req.body);
-    try {
-      const todo = new Todo(req.body);
-      await todo.save();
-      res.json(todo);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Error adding todo" });
-    }
-  });
-
-  app.delete('/todolist/:todoId', async (req, res) => {
-    const { todoId } = req.params;
-    console.log(todoId)
-    try {
-        // Assuming Todo is your Mongoose model
-        await Todo.findByIdAndDelete({_id: todoId});
-        res.status(200).send('Todo deleted successfully');
-    } catch (error) {
-        res.status(500).send('Error deleting todo');
-    }
+  try {
+    const todo = new Todo(req.body);
+    await todo.save();
+    res.json(todo);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error adding todo" });
+  }
 });
 
-  
+app.delete('/todolist/:todoId', async (req, res) => {
+  const { todoId } = req.params;
+  console.log(todoId)
+  try {
+    // Assuming Todo is your Mongoose model
+    await Todo.findByIdAndDelete({ _id: todoId });
+    res.status(200).send('Todo deleted successfully');
+  } catch (error) {
+    res.status(500).send('Error deleting todo');
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Todo app backend listening at http://localhost:${port}`);
 });
