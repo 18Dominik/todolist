@@ -1,0 +1,7 @@
+
+vscode:
+  extensions:
+    - mongodb.mongodb-vscode
+ports:
+    - port: 3000-8999
+      onOpen: ignore
