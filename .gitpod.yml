@@ -5,3 +5,14 @@ vscode:
 ports:
     - port: 3000-8999
       onOpen: ignore
+tasks:
+  - init: |
+      echo "Pulling MongoDB..."
+      docker pull mongo
+      echo "Preparing MonboDB Instance"
+      docker run --name mymongo -d -p 27017:27017 mongo
+    command: |  
+      echo "Starting Node Server..."
+      npm install
+      node server.js
+  
