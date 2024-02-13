@@ -62,6 +62,9 @@ curl -X POST http://localhost:3000/todolist \
 
 curl -H "Accept: application/json" http://localhost:3000/todolist
 
+Run application
+-> in working directory ./todo-app: node server.js
+
 Start Mongo DB Instance
 1. Pull Docker Image: docker pull mongo
 2. Run docker container: docker run --name mymongo -d -p 27017:27017 mongo
