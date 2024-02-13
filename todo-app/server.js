@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
+//import cors from 'cors';
 //import { fileURLToPath } from 'url';
 //import path, { dirname } from 'path';
 
@@ -13,7 +13,7 @@ const port = 3000;
 // Middleware
 
 app.use(express.static('./'));
-app.use(cors());
+//app.use(cors());
 app.use(express.json()); // for parsing application/json
 
 // Connect to MongoDB
