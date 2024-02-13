@@ -2,7 +2,7 @@
 FROM node:16
 
 # Set the working directory
-WORKDIR /usr/src/app
+WORKDIR /todo-app
 
 # Copy package.json and package-lock.json
 COPY todo-app/package*.json ./
@@ -11,7 +11,10 @@ COPY todo-app/package*.json ./
 RUN npm install
 
 # Bundle app source
-COPY . .
+COPY todo-app/ .
+
+# Your application binds to port 3000, so use the EXPOSE instruction to have it mapped by the docker daemon
+EXPOSE 3000
 
 # Command to run the app
-CMD [ "node", "todo-app/server.js" ]
+CMD [ "node", "server.js" ]

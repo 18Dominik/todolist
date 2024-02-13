@@ -17,7 +17,7 @@ app.use(express.static('./'));
 app.use(express.json()); // for parsing application/json
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/todolist') //change from "localhost" to e.g. mymongo if serve.js is containerized
+mongoose.connect('mongodb://mymongo:27017/todolist') //change from "localhost" to e.g. mymongo if serve.js is containerized
 .then(() => console.log('Successfully connected to MongoDB.'))
 .catch((error) => console.error('Error connecting to MongoDB:', error));
 
@@ -73,9 +73,9 @@ Start Mongo DB Instance
 
 Containerize Application
 1.create network: docker network create mynetwork
-2. Run MongoDB in network:  docker run --name mymongo --network mynetwork1 -d -p 27017:27017 mongo
-3. Create image: docker build -t todoapp2 .
-4. Run application container image: docker run --network mynetwork1 todoapp9
+2. Run MongoDB in network:  docker run --name mymongo --network mynetwork -d -p 27017:27017 mongo
+3. Create image: docker build -t todoapp .
+4. Run application container image: docker run --network mynetwork -p 3000:3000 todoapp
 
 
 */
