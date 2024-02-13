@@ -1,11 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
+//import { fileURLToPath } from 'url';
+//import path, { dirname } from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+//const __filename = fileURLToPath(import.meta.url);
+//const __dirname = dirname(__filename);
 
 const app = express();
 const port = 3000;
@@ -13,7 +13,6 @@ const port = 3000;
 // Middleware
 
 app.use(express.static('./'));
-console.log(__dirname)
 app.use(cors());
 app.use(express.json()); // for parsing application/json
 
