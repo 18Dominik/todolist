@@ -1,5 +1,5 @@
 async function fetchTodos() {
-    const response = await fetch('https://3000-18dominik-todolist-8vzmwfch90l.ws-eu108.gitpod.io/todolist'); //localhost is gitpod-url
+    const response = await fetch('./todolist'); //localhost is gitpod-url
     const todos = await response.json();
     const listElement = document.getElementById('todo-list');
     listElement.innerHTML = ''; // Clear current todos
@@ -15,7 +15,7 @@ async function fetchTodos() {
     try{
     const inputElement = document.getElementById('todo-input');
     const task = inputElement.value;
-    await fetch('https://3000-18dominik-todolist-8vzmwfch90l.ws-eu108.gitpod.io/todolist', {
+    await fetch('./todolist', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
